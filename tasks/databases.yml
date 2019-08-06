@@ -1,0 +1,21 @@
+---
+- name: Postgresql | Ensure databases
+  postgresql_db:
+    name: "{{ item.name }}"
+    owner: "{{ item.owner }}"
+    encoding: "{{ item.encoding | default('UTF-8') }}"
+    lc_collate: "{{ item.lc_collate | default('en_US.UTF-8') }}"
+    lc_ctype: "{{ item.lc_ctype | default('en_US.UTF-8') }}"
+    conn_limit: "{{ item.connection_limit | default('-1') }}"
+  with_items: "{{ postgresql.databases }}"
+
+- name: Postgresql | Ensure DB owners privileges
+  postgresql_privs:
+    # posgres here is only DB to connect to, not a DB to which privs
+    # will be granted
+    db: postgres
+    privs: ALL
+    type: database
+    obj: "{{ item.name }}"
+    role: "{{ item.owner }}"
+  with_items: "{{ postgresql.databases }}"

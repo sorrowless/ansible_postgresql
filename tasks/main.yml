@@ -1,0 +1,29 @@
+---
+- name: Postgresql | Merge default values with user ones
+  set_fact:
+    iptables: "{{ postgresql_defaults | combine(postgresql) }}"
+
+- name: Postgresql | Initialize sources repository
+  import_tasks: initialize_repos.yml
+  when: postgresql.install_from_sources
+
+- name: Postgresql | Install packages
+  import_tasks: install_packages.yml
+
+- name: Postgresql | Initialize clusters
+  import_tasks: initialize_clusters.yml
+
+- name: Postgresql | Ensure users
+  include_tasks: users.yml
+  loop: "{{ postgresql.users }}"
+  loop_control:
+    loop_var: user
+
+- name: Postgresql | Ensure databases
+  import_tasks: databases.yml
+
+- name: Postgresql | Ensure extensions
+  import_tasks: extensions.yml
+
+- name: Postgresql | Restore dumps
+  import_tasks: restores.yml

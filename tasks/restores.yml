@@ -1,0 +1,14 @@
+---
+- name: Postgresql | Upload dumps from source host
+  synchronize:
+    src: "{{ item.host_path }}"
+    dest: "{{ item.target_path }}"
+  with_items: "{{ postgresql.restores }}"
+  when: item.upload_from_source_host
+
+- name: Postgresql | Restore dumps
+  postgresql_db:
+    name: "{{ item.db_name }}"
+    state: restore
+    target: "{{ item.target_path }}"
+  with_items: "{{ postgresql.restores }}"

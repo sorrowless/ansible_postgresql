@@ -1,0 +1,11 @@
+---
+- name: Postgresql | Add sources deb repository
+  apt_repository:
+    repo: "deb {{ postgresql.repository_url }} {{ postgresql.version_name }} {{ postgresql.repo_type }}"
+    state: present
+    filename: postgresql
+
+- name: Postgresql | Add repo key
+  apt_key:
+    url: "{{ postgresql.repo_key_url }}"
+    state: present

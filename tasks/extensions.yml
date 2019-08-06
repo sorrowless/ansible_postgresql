@@ -1,0 +1,6 @@
+---
+- name: Postgresql | Ensure extensions
+  postgresql_ext:
+    name: "{{ item.name }}"
+    db: "{{ item.db }}"
+  with_items: "{{ postgresql.extensions }}"

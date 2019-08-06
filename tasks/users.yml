@@ -1,0 +1,11 @@
+---
+- name: "Postgresql | Create {{ user.name }} role"
+  postgresql_user:
+    name: "{{ user.name }}"
+    password: "{{ user.secret }}"
+    state: "{{ user.state | default('present') }}"
+
+- name: "Postgresql | Run user {{ user.name }} additional queries"
+  postgresql_query:
+    query: "{{ item }}"
+  with_items: "{{ user.additional_queries }}"

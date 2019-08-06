@@ -1,0 +1,10 @@
+---
+- name: Postgresql | Database install
+  package:
+    name: "postgresql-{{ postgresql.version }}"
+    state: present
+
+- name: Postgresql | Additional packages install
+  package:
+    name: "{{ postgresql.additional_packages }}"
+    state: present

@@ -1,0 +1,14 @@
+---
+- name: Postgresql | List available clusters
+  shell: "pg_lsclusters -h | cut -f2 -d' '"
+  register: clusters_available
+  changed_when: false
+
+- name: "Posgresql | Drop '{{ item }}'cluster"
+  command: "pg_dropcluster --stop {{ postgresql.version }} {{ item }}"
+  when: clusters_available.stdout | match("^{{ item }}$")
+  with_items: "{{ postgresql.clusters_to_drop }}"
+
+- name: "Posgresql | Create '{{ item }}'cluster"
+  command: "pg_createcluster --locale {{ item.locale | default('en_US.utf8') --start {{ item.version | default(postgresql.version) }} {{ item.name }}"
+  with_items: "{{ postgresql.clusters_to_drop }}"

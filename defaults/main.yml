@@ -1,0 +1,75 @@
+---
+postgresql: {}
+postgresql_defaults:
+  # Enable whole role
+  enabled: yes
+  # Whether install Postgresql from sources or from distro repositories
+  install_from_sources: no
+  repository_url: http://apt.postgresql.org/pub/repos/apt/
+  version_name: xenial-pgdg
+  repo_type: main
+  repo_key_url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+  # Version to install. If installation from sources disabled and needed
+  # version not found in repositories, role will fail.
+  version: 9.5
+  additional_packages:
+    - postgresql-client-9.5
+    - libpq-dev
+    - python-psycopg2
+  # Whether we should drop some clusters
+  clusters_to_drop: []
+  #
+  # List of clusters to create
+  clusters_to_create: []
+  ## Example of cluster to create:
+  # clusters_to_create:
+  #   - name: main_ru
+  #     locale: ru_RU.utf8   # Optional, default is en_US.utf8
+  #     version: 9.5   # Optional, default is server installed
+  #
+  # Users to create
+  users: []
+  # Example:
+  #users:
+  #  - name: user
+  #    secret: password
+  #    # Optional, default: present
+  #    state: present
+  #    # Optional, default: none
+  #    additional_queries:
+  #      - "ALTER ROLE user SET client_encoding TO 'utf8'"
+  #      - "ALTER ROLE user SET default_transaction_isolation TO 'read committed'"
+  #      - "ALTER ROLE user SET timezone TO 'UTC'"
+  #
+  # Databases to create
+  databases: []
+  # Example:
+  #databases:
+  #  - name: db_name
+  #    # Owner will automatically be granted ALL privileges to this DB
+  #    owner: db_owner
+  #    # Optional, default: UTF-8
+  #    encoding: UTF8
+  #    # Optional, default: en_US.UTF-8
+  #    lc_collate: ru_RU.utf8
+  #    # Optional, default: en_US.UTF-8
+  #    lc_ctype: ru_RU.utf8
+  #    # Optional, default: -1
+  #    connection_limit: -1
+  #
+  # Extensiona to create
+  extensions: []
+  # Example:
+  # extensions:
+  #   - name: pg_trgm
+  #     db: some_db
+  #
+  # Restores of previous dumps
+  restores: []
+  # Example:
+  #restores:
+  #  - upload_from_source_host: true
+  #    db_name: db_name
+  #    host_path: /tmp/db.sql.gz
+  #    target_path: /tmp/db.sql.gz
+
