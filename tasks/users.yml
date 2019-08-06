@@ -1,11 +1,16 @@
 ---
 - name: "Postgresql | Create {{ user.name }} role"
+  become: yes
+  become_user: postgres
   postgresql_user:
     name: "{{ user.name }}"
     password: "{{ user.secret }}"
     state: "{{ user.state | default('present') }}"
 
 - name: "Postgresql | Run user {{ user.name }} additional queries"
+  become: yes
+  become_user: postgres
   postgresql_query:
     query: "{{ item }}"
   with_items: "{{ user.additional_queries }}"
+  changed_when: false

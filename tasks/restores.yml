@@ -7,6 +7,8 @@
   when: item.upload_from_source_host
 
 - name: Postgresql | Restore dumps
+  become: yes
+  become_user: postgres
   postgresql_db:
     name: "{{ item.db_name }}"
     state: restore

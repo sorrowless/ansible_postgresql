@@ -1,7 +1,7 @@
 ---
 - name: Postgresql | Merge default values with user ones
   set_fact:
-    iptables: "{{ postgresql_defaults | combine(postgresql) }}"
+    postgresql: "{{ postgresql_defaults | combine(postgresql, recursive=True) }}"
 
 - name: Postgresql | Initialize sources repository
   import_tasks: initialize_repos.yml

@@ -1,5 +1,7 @@
 ---
 - name: Postgresql | Ensure extensions
+  become: yes
+  become_user: postgres
   postgresql_ext:
     name: "{{ item.name }}"
     db: "{{ item.db }}"

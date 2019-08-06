@@ -1,5 +1,7 @@
 ---
 - name: Postgresql | Ensure databases
+  become: yes
+  become_user: postgres
   postgresql_db:
     name: "{{ item.name }}"
     owner: "{{ item.owner }}"
@@ -10,6 +12,8 @@
   with_items: "{{ postgresql.databases }}"
 
 - name: Postgresql | Ensure DB owners privileges
+  become: yes
+  become_user: postgres
   postgresql_privs:
     # posgres here is only DB to connect to, not a DB to which privs
     # will be granted
