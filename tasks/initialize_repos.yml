@@ -1,7 +1,7 @@
 ---
 - name: Postgresql | Add sources deb repository
   apt_repository:
-    repo: "deb {{ postgresql.repository_url }} {{ postgresql.version_name }} {{ postgresql.repo_type }}"
+    repo: "deb {{ postgresql.repository_url }} {{ os_release }}-pgdg {{ postgresql.repo_type }}"
     state: present
     filename: postgresql
 

@@ -6,7 +6,6 @@ postgresql_defaults:
   # Whether install Postgresql from sources or from distro repositories
   install_from_sources: no
   repository_url: http://apt.postgresql.org/pub/repos/apt/
-  version_name: xenial-pgdg
   repo_type: main
   repo_key_url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
   # Version to install. If installation from sources disabled and needed

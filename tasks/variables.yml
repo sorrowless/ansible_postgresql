@@ -1,0 +1,4 @@
+---
+- name: Include Ubuntu-specific variables
+  include_vars: "{{ ansible_distribution }}_{{ ansible_distribution_version.split('.')[0] }}.yml"
+  when: ansible_os_family == 'Debian'
