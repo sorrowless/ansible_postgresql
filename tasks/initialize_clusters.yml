@@ -11,6 +11,15 @@
   when: clusters_available.stdout is match(item)
   with_items: "{{ postgresql.clusters_to_drop }}"
 
+  # Postgres typical locale name is en_US.utf8 but system locale name looks
+  # like en_US.UTF-8, so we're doing a little trick here
+- name: Postgresql | Generate proper locales
+  locale_gen:
+    name: '{{ item.locale.split(".")[0] }}.UTF-8'
+    state: present
+  when: item.locale is defined and "utf" in item.locale
+  with_items: "{{ postgresql.clusters_to_create }}"
+
 - name: Postgresql | Create needed cluster
   shell:
     cmd: |
