@@ -12,5 +12,5 @@
   become_user: postgres
   postgresql_query:
     query: "{{ item }}"
-  with_items: "{{ user.additional_queries | default([])}}"
+  with_items: "{{ user.additional_queries | default([]) }}"
   changed_when: false

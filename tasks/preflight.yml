@@ -1,0 +1,5 @@
+---
+- name: Postgresql | Install additional packages
+  package:
+    name: "{{ postgresql_additional_packages }}"
+    state: present

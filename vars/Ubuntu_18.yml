@@ -1,2 +1,4 @@
 ---
 os_release: bionic
+postgresql_additional_packages:
+  - gnupg

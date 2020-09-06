@@ -27,4 +27,16 @@
                        --start {{ item.version | default(postgresql.version) }} \
                        {{ item.name }}
   with_items: "{{ postgresql.clusters_to_create }}"
-  when: clusters_available.stdout == "" or clusters_available.stdout is not match(item.name)
+  when: clusters_available.stdout is not match(item.name)
+
+- name: Ensure needed service is started
+  systemd:
+    state: started
+    name: 'postgresql@{{ postgresql.version }}-main.service'
+  when: not postgresql.clusters_to_create
+
+- name: Ensure needed service is started
+  systemd:
+    state: started
+    name: 'postgresql@{{ item.version|default(postgresql.version) }}-{{ item.name|default("main") }}.service'
+  with_items: "{{ postgresql.clusters_to_create }}"

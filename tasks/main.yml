@@ -6,6 +6,9 @@
 - name: Postgresql | Initialize variables
   import_tasks: variables.yml
 
+- name: Postgresql | Preflight tasks
+  import_tasks: preflight.yml
+
 - name: Postgresql | Initialize sources repository
   import_tasks: initialize_repos.yml
   when: postgresql.install_from_sources

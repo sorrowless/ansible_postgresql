@@ -12,7 +12,7 @@ postgresql_defaults:
   # version not found in repositories, role will fail.
   version: 9.5
   additional_packages:
-    #- postgresql-client-9.5
+    # - postgresql-client-9.5
     - libpq-dev
     - python-psycopg2
     - python3-psycopg2
@@ -30,32 +30,32 @@ postgresql_defaults:
   # Users to create
   users: []
   # Example:
-  #users:
-  #  - name: user
-  #    secret: password
-  #    # Optional, default: present
-  #    state: present
-  #    # Optional, default: none
-  #    additional_queries:
-  #      - "ALTER ROLE user SET client_encoding TO 'utf8'"
-  #      - "ALTER ROLE user SET default_transaction_isolation TO 'read committed'"
-  #      - "ALTER ROLE user SET timezone TO 'UTC'"
+  # users:
+  #   - name: user
+  #     secret: password
+  #     # Optional, default: present
+  #     state: present
+  #     # Optional, default: none
+  #     additional_queries:
+  #       - "ALTER ROLE user SET client_encoding TO 'utf8'"
+  #       - "ALTER ROLE user SET default_transaction_isolation TO 'read committed'"
+  #       - "ALTER ROLE user SET timezone TO 'UTC'"
   #
   # Databases to create
   databases: []
   # Example:
-  #databases:
-  #  - name: db_name
-  #    # Owner will automatically be granted ALL privileges to this DB
-  #    owner: db_owner
-  #    # Optional, default: UTF-8
-  #    encoding: UTF8
-  #    # Optional, default: en_US.UTF-8
-  #    lc_collate: ru_RU.utf8
-  #    # Optional, default: en_US.UTF-8
-  #    lc_ctype: ru_RU.utf8
-  #    # Optional, default: -1
-  #    connection_limit: -1
+  # databases:
+  #   - name: db_name
+  #     # Owner will automatically be granted ALL privileges to this DB
+  #     owner: db_owner
+  #     # Optional, default: UTF-8
+  #     encoding: UTF8
+  #     # Optional, default: en_US.UTF-8
+  #     lc_collate: ru_RU.utf8
+  #     # Optional, default: en_US.UTF-8
+  #     lc_ctype: ru_RU.utf8
+  #     # Optional, default: -1
+  #     connection_limit: -1
   #
   # Extensiona to create
   extensions: []
@@ -67,9 +67,8 @@ postgresql_defaults:
   # Restores of previous dumps
   restores: []
   # Example:
-  #restores:
-  #  - upload_from_source_host: true
-  #    db_name: db_name
-  #    host_path: /tmp/db.sql.gz
-  #    target_path: /tmp/db.sql.gz
-
+  # restores:
+  #   - upload_from_source_host: true
+  #     db_name: db_name
+  #     host_path: /tmp/db.sql.gz
+  #     target_path: /tmp/db.sql.gz

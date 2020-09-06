@@ -1,2 +1,3 @@
 ---
 os_release: xenial
+postgresql_additional_packages: []

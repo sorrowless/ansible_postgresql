@@ -1,2 +1,4 @@
 ---
 os_release: focal
+postgresql_additional_packages:
+  - gnupg
