@@ -1,21 +1,22 @@
-sbog/postgresql
-===============
+# sbog/postgresql
 
-Role to work with Postgresql.
+[![Build Status](https://travis-ci.com/sorrowless/ansible_postgresql.svg?branch=master)](https://travis-ci.com/sorrowless/ansible_postgresql)
 
-#### Requirements
+An Ansible role which installs and configures [Postgresql](https://www.postgresql.org/) on Linux
+
+## Requirements
 
 Ansible 2.7+
 
-#### Role Variables
+## Role Variables
 
-You can see all vars in `default/main.yml` vars file.
+You can see all vars in `defaults/main.yml` vars file.
 
-#### Dependencies
+## Dependencies
 
 None
 
-#### Example Playbook
+## Example Playbook
 
 ```yaml
 - name: Ensure postgresql DB
@@ -26,10 +27,10 @@ None
     - postgresql
 ```
 
-#### License
+## License
 
 Apache 2.0
 
-#### Author Information
+## Author Information
 
-Stanislaw Bogatkin (https://sbog.ru)
+This role was created by [Stan Bogatkin](https://sbog.ru).
