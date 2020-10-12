@@ -11,11 +11,8 @@ postgresql_defaults:
   # Version to install. If installation from sources disabled and needed
   # version not found in repositories, role will fail.
   version: 9.5
-  additional_packages:
+  additional_packages: []
     # - postgresql-client-9.5
-    - libpq-dev
-    - python-psycopg2
-    - python3-psycopg2
   # Whether we should drop some clusters
   clusters_to_drop: []
   #

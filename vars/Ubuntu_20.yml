@@ -2,3 +2,5 @@
 os_release: focal
 postgresql_additional_packages:
   - gnupg
+  - libpq-dev
+  - python3-psycopg2

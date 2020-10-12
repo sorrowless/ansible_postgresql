@@ -1,3 +1,6 @@
 ---
 os_release: xenial
-postgresql_additional_packages: []
+postgresql_additional_packages:
+  - libpq-dev
+  - python-psycopg2
+  - python3-psycopg2
